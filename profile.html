@@ -83,7 +83,7 @@
             type="text"
             name="first_name"
             class="form-control"
-            id="first_name"
+            id="first-name"
             placeholder="e.g. Mark"
             required
           />
@@ -94,7 +94,7 @@
             type="text"
             name="second_name"
             class="form-control"
-            id="second_name"
+            id="second-name"
             placeholder="e.g. Twain"
             required
           />
@@ -156,15 +156,14 @@
             required
           />
         </div>
-        <p class="text-muted text-center">Your access token</p>
+        <p class="text-muted text-center">Your access token (keep it secret)</p>
         <div class="input-group mb-3">
           <input
             type="text"
             name="token"
-            class="form-control show-hide"
+            class="form-control"
             id="token"
             readonly
-            value=""
           />
           <button
             type="button"
@@ -195,6 +194,18 @@
       <!-- create todo -->
       <form class="form-card border rounded bg-light" id="create-todo">
         <h5 class="text-center">Create todo</h5>
+        <div class="mb-3">
+          <label for="todo-create-token" class="form-label"
+            >Paste in your access token to create a todo</label
+          >
+          <input
+            type="text"
+            name="todo-create-token"
+            class="form-control"
+            id="todo-create-token"
+            placeholder="e.g. 912737127ncec1bc87321bc9872bc32187"
+          />
+        </div>
         <div class="mb-3">
           <label for="todo-create" class="form-label">Your to-do</label>
           <input
@@ -298,36 +309,6 @@
       </p>
     </div>
     <!-- footer -->
-
-    <!-- alert -->
-    <!--  -->
-    <div
-      class="alert alert-success alert-dismissible fade show"
-      id="success-alert"
-      role="alert"
-    >
-      <button
-        type="button"
-        class="btn-close"
-        data-bs-dismiss="alert"
-        aria-label="Close"
-      ></button>
-    </div>
-    <!--  -->
-    <div
-      class="alert alert-danger alert-dismissible fade show"
-      id="error-alert"
-      role="alert"
-    >
-      <button
-        type="button"
-        class="btn-close"
-        data-bs-dismiss="alert"
-        aria-label="Close"
-      ></button>
-    </div>
-    <!--  -->
-    <!-- alert -->
   </body>
   <script src="./js/main.js"></script>
 </html>
