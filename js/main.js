@@ -241,4 +241,68 @@ $(document).ready(function () {
       },
     });
   });
+
+  // ajax
+  // show call results
+  var intro_card = $("#intro-card");
+
+  var fetch_list = $("#fetch-list");
+
+  fetch_list.submit(function (event) {
+    event.preventDefault();
+
+    var access_token = $("#access-token").val();
+
+    $.ajax({
+      url: "https://hidden-garden-92379.herokuapp.com/api/todo-list/",
+      method: "GET",
+      async: true,
+      dataType: "json",
+      headers: {
+        Authorization: "Token " + access_token,
+      },
+      beforeSend: function () {
+        load_list.hide();
+        load_list_spinner.show();
+        intro_card.hide();
+      },
+      success: function (response) {
+        console.log(response);
+
+        sessionStorage.setItem("response", response);
+
+        for (var i = 0; i < response.length; i++) {
+          var card_parent = $('<div class="card bg-light text-center"></div>');
+          var card_body = $('<div class="card-body"></div>');
+          var card_container = card_parent.append(card_body);
+
+          var card_text = $('<h5 class="card-text"></h5> </br>');
+          var card_completed = $('<p class="blockquote-footer"></p>');
+          var card_id = $('<p class="blockquote-footer"></p>');
+
+          var card_item = card_container.append(
+            card_text,
+            card_completed,
+            card_id
+          );
+
+          card_text.html(response[i]["thing_to_do"]);
+          card_completed.html("Completed: " + response[i]["completed"]);
+          card_id.html("id: " + response[i]["id"]);
+
+          $(".main-body").append(card_item);
+        }
+      },
+      error: function (error) {
+        console.log(error);
+        alert("Error! You have made a bad request.");
+      },
+      complete: function () {
+        load_list_spinner.hide();
+        load_list.show();
+        var end_bar = $("<hr/>");
+        $(".main-body").append(end_bar);
+      },
+    });
+  });
 });
