@@ -50,7 +50,7 @@
     <!-- title -->
 
     <!-- modal token request -->
-    <div class="modal-container container">
+    <div class="modal-container">
       <hr />
       <!-- Button trigger modal -->
       <!--  -->
@@ -127,7 +127,7 @@
             </div>
             <div class="modal-footer">
               <a
-                href="profile.html"
+                href="profile.html#token-form"
                 type="button"
                 class="btn text-primary container-fluid"
               >
@@ -143,21 +143,42 @@
     <!-- modal token request -->
 
     <!-- content -->
-    <div class="main-body container">
+    <div class="main-body">
       <!-- card -->
-      <div class="card bg-info">
-        <div class="card-body" id="todo-body">
-          <blockquote class="blockquote mb-0">
-            <p class="" id="todo-text">
-              A well-known quote, contained in a blockquote element.
-            </p>
-            <footer id="eye-d" class="blockquote-footer">
-              id: <cite title="Source Title">3</cite>
-            </footer>
-          </blockquote>
+      <div class="card text-center">
+        <div class="card-header">
+          <strong>About</strong>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">To-do list app</h5>
+          <p class="card-text">
+            This web application is a frontend implementation of a TodoList-API
+            application developed using
+            <strong class="text-success">Django</strong>, &
+            <strong class="text-danger">Django REST Framework</strong>.
+          </p>
+          <p class="card-text">
+            The API application utilizes the following
+            <code>http</code> methods: <br />
+            <code>POST</code>, <code>GET</code>, <code>PUT</code>,
+            <code>DELETE</code>
+          </p>
+          <p class="card-text">This is web application enables a user to:</p>
+          <ul class="list-group list-group-flush card-text">
+            <li class="list-group-item">-> Create a user account.</li>
+            <li class="list-group-item">
+              -> Authenticate the account and generate a user access token.
+            </li>
+            <li class="list-group-item">-> Create a to-do item(s).</li>
+            <li class="list-group-item">-> Edit & delete a to-do item(s).</li>
+          </ul>
+        </div>
+        <div class="card-footer text-muted">
+          <a href="#">link to API app</a>
         </div>
       </div>
       <!-- card -->
+      <hr />
     </div>
     <!-- content -->
   </body>
