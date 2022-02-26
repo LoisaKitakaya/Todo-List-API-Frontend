@@ -10,12 +10,15 @@ $(document).ready(function () {
   var create_todo_btn_spinner = $("#create-todo-btn-spinner");
   var update_todo_btn = $("#update-todo-btn");
   var update_todo_btn_spinner = $("#update-todo-btn-spinner");
+  var delete_todo_btn = $("#delete-todo-btn");
+  var delete_todo_btn_spinner = $("#delete-todo-btn-spinner");
 
   load_list_spinner.hide();
   create_account_btn_spinner.hide();
   generate_token_btn_spinner.hide();
   create_todo_btn_spinner.hide();
   update_todo_btn_spinner.hide();
+  delete_todo_btn_spinner.hide();
 
   // hide/show token
   var token = $("#token");
@@ -30,6 +33,7 @@ $(document).ready(function () {
   var token_form = $("#token-form");
   var create_todo = $("#create-todo");
   var update_todo = $("#update-todo");
+  var delete_todo = $("#delete-todo");
 
   create_form.submit(function (event) {
     event.preventDefault();
@@ -147,6 +151,93 @@ $(document).ready(function () {
       complete: function () {
         create_todo_btn_spinner.hide();
         create_todo_btn.show();
+      },
+    });
+  });
+
+  update_todo.submit(function (event) {
+    event.preventDefault();
+
+    var access_token = $("#todo-update-token").val();
+    var todo_item_id = $("#todo-update").val();
+    var todo_edit = $("#todo-edit").val();
+    var completed_task = $("#completed-update");
+    var check = completed_task.is(":checked");
+
+    if (check === true) {
+      var todo_complete = check;
+    } else {
+      var todo_complete = check;
+    }
+
+    var form_data = {
+      thing_to_do: todo_edit,
+      completed: todo_complete,
+    };
+
+    $.ajax({
+      url:
+        "https://hidden-garden-92379.herokuapp.com/api/todo-item/" +
+        todo_item_id +
+        "/",
+      method: "PUT",
+      async: true,
+      dataType: "json",
+      data: form_data,
+      headers: {
+        Authorization: "Token " + access_token,
+      },
+      beforeSend: function () {
+        update_todo_btn.hide();
+        update_todo_btn_spinner.show();
+      },
+      success: function (response) {
+        console.log(response);
+        alert("To-do item updated successfully");
+      },
+      error: function (error) {
+        console.log(error);
+        alert(error.Error);
+      },
+      complete: function () {
+        update_todo_btn_spinner.hide();
+        update_todo_btn.show();
+      },
+    });
+  });
+
+  delete_todo.submit(function (event) {
+    event.preventDefault();
+
+    var access_token = $("#todo-delete-token").val();
+    var todo_item_id = $("#todo-delete").val();
+
+    $.ajax({
+      url:
+        "https://hidden-garden-92379.herokuapp.com/api/todo-item/" +
+        todo_item_id +
+        "/",
+      method: "DELETE",
+      async: true,
+      dataType: "json",
+      headers: {
+        Authorization: "Token " + access_token,
+      },
+      beforeSend: function () {
+        delete_todo_btn.hide();
+        delete_todo_btn_spinner.show();
+      },
+      success: function (response) {
+        console.log(response);
+        alert("Item deleted successfully.");
+      },
+      error: function (error) {
+        console.log(error);
+        alert("Error! You have made a bad request.");
+      },
+      complete: function () {
+        delete_todo_btn_spinner.hide();
+        delete_todo_btn.show();
       },
     });
   });

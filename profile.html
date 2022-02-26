@@ -250,6 +250,18 @@
       <form class="form-card border rounded bg-light" id="update-todo">
         <h5 class="text-center">Edit todo</h5>
         <div class="mb-3">
+          <label for="todo-update-token" class="form-label"
+            >Paste in your access token to create a todo</label
+          >
+          <input
+            type="text"
+            name="todo-update-token"
+            class="form-control"
+            id="todo-update-token"
+            placeholder="e.g. 912737127ncec1bc87321bc9872bc32187"
+          />
+        </div>
+        <div class="mb-3">
           <label for="todo-update" class="form-label">Todo id</label>
           <input
             type="text"
@@ -298,6 +310,49 @@
         </button>
       </form>
       <!-- update todo -->
+
+      <!-- delete todo -->
+      <form class="form-card border rounded bg-light" id="delete-todo">
+        <h5 class="text-center">Delete todo</h5>
+        <div class="mb-3">
+          <label for="todo-delete-token" class="form-label"
+            >Paste in your access token to create a todo</label
+          >
+          <input
+            type="text"
+            name="todo-delete-token"
+            class="form-control"
+            id="todo-delete-token"
+            placeholder="e.g. 912737127ncec1bc87321bc9872bc32187"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="todo-delete" class="form-label">Todo id</label>
+          <input
+            type="text"
+            name="todo-delete"
+            class="form-control"
+            id="todo-delete"
+            placeholder="e.g. 3"
+          />
+        </div>
+        <button type="submit" class="btn btn-danger" id="delete-todo-btn">
+          Submit
+        </button>
+        <button
+          type="submit"
+          class="btn btn-danger"
+          id="delete-todo-btn-spinner"
+        >
+          <span
+            class="spinner-border spinner-border-sm"
+            role="status"
+            aria-hidden="true"
+          ></span>
+          Loading...
+        </button>
+      </form>
+      <!-- delete todo -->
       <hr />
     </div>
     <!-- form -->
